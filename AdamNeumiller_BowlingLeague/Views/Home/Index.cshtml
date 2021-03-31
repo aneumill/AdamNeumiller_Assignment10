@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IndexViewModel
+<!--
+    Adam Neumiller
+    Section 3
+    Assignment #10
+
+
+    Create an app that displays a contact list for all the bowlers in the league:  First Name, M
+    iddle Init, Last Name, Address, City, State, Zip, Phone NumberBuild a filter that allows the user 
+    to select a team name and have only the contact names for that particular team appear.Make sure the 
+    selected team is highlighted in the list.  Add a heading onto the page with the team name when that particular 
+    team is selected(#notcoveredinthevideos).  Allow the user to click “Home” to go back to the full list of bowlers
+
+
+
+
+
+
+-->
+
+<!-- This is the index view -->
+<div>
+    <h1 class="text-center">@Model.TeamName</h1>
+</div>
+<div class="text-center">
+    <table class="table table-dark table-striped ">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Middle Init.</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+
+
+        <!-- Loop through the DB-->
+        @foreach (var x in Model.Bowlers)
+        {
+            <tr>
+
+                <td>@x.BowlerFirstName</td>
+                <td>@x.BowlerMiddleInit</td>
+                <td>@x.BowlerLastName</td>
+                <td>@x.BowlerAddress</td>
+                <td>@x.BowlerCity</td>
+                <td>@x.BowlerState</td>
+                <td>@x.BowlerZip</td>
+                <td>@x.BowlerPhoneNumber</td>
+
+            </tr>
+
+        }
+
+    </table>
+    <!-- THis is the div for the Pagination-->
+    <div page-info="@Model.PageNumberingInfo" page-url-teamname="@Model.TeamName">
+
+    </div>
+</div>
+
+
